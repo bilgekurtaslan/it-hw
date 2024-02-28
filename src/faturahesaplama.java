@@ -38,7 +38,7 @@ public class faturahesaplama {
 
             switch (menu) {
                 case 1:
-                    // Listeleme fonksiyonu
+                    
                     for (int i = 0; i < ks; i++) {
                         System.out.println("Adı: " + ad[i]);
                         System.out.println("Dakika Kullanımı: " + dakika[i]);
@@ -49,7 +49,7 @@ public class faturahesaplama {
                     }
                     break;
                 case 2:
-                    // İsim Arama fonksiyonu
+                    
                     System.out.println("Aranacak ismi giriniz: ");
                     String arananIsim = giris.next();
                     int bulunanIndex = -1;
@@ -70,7 +70,7 @@ public class faturahesaplama {
                     }
                     break;
                 case 3:
-                    // En Fazla Fatura fonksiyonu
+                    
                     int enFazlaIndex = 0;
                     for (int i = 1; i < ks; i++) {
                         if (fatura[i] > fatura[enFazlaIndex]) {
@@ -81,7 +81,7 @@ public class faturahesaplama {
                     System.out.println("Fatura Tutarı: " + fatura[enFazlaIndex] + " TL");
                     break;
                 case 4:
-                    // En Az Fatura fonksiyonu
+                    
                     int enAzIndex = 0;
                     for (int i = 1; i < ks; i++) {
                         if (fatura[i] < fatura[enAzIndex]) {
@@ -92,7 +92,7 @@ public class faturahesaplama {
                     System.out.println("Fatura Tutarı: " + fatura[enAzIndex] + " TL");
                     break;
                 case 5:
-                    // En Düşük Kullanım fonksiyonu
+                   
                     int enDusukDakikaIndex = 0, enDusukSmsIndex = 0, enDusukGbIndex = 0;
                     for (int i = 1; i < ks; i++) {
                         if (dakika[i] < dakika[enDusukDakikaIndex]) {
