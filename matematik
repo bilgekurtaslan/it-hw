@@ -19,26 +19,30 @@ public class matematik {
 
     }
     private static int benimMax(int i, int j) {
-        if (j<i){
-            System.out.println(i);
-             if (i<j){
-                System.out.println(j);
-            }
-        }
-        return 0;
+        int max;
+        if(i>j)max=i;
+        else max=j;
+        return max;
     }
     private static int benimMin(int i, int j) {
-
-        return 0;
+        int min;
+        if(i<j)min=i;
+        else min=j;
+        return min;
     }
     private static double benimRound(double d) {
-        return 0;
+        int tamKisim = (int) d;
+        double ondalikKisim = d - tamKisim;
+        if (ondalikKisim >= 0.5) {
+            tamKisim++;
+        }
+        return tamKisim;
     }
     private static double benimFloor(double d) {
-        return 0;
+        return (int)d;
     }
     private static double benimCeil(double d){
-        return 0;
+        return (int)++d;
     }
 }
 
