@@ -1,0 +1,13 @@
+int maasArtis = 0;
+            if (medeni_durum[i].toLowerCase().equals("evli")) {
+                maasArtis += 500;
+            }
+            for (int j = 0; j < cocuk[i]; j++) {
+                if (j < 3) {
+                    maasArtis += 250;
+                } else {
+                    maasArtis += 750;
+                    break;
+                }
+            }
+            maas[i] = maasArtis;
