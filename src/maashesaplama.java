@@ -9,7 +9,7 @@ public class maashesaplama {
         int kisiSayisi = scanner.nextByte();
 
         String ad[] = new String[kisiSayisi];
-        boolean cinsiyet[] = new boolean[kisiSayisi]; // 'Boolean' yerine 'boolean' kullanıldı.
+        boolean cinsiyet[] = new boolean[kisiSayisi]; 
         boolean medeniDurum[] = new boolean[kisiSayisi];
         byte yas[] = new byte[kisiSayisi];
         int maas[] = new int[kisiSayisi];
