@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class kosulorn {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Vize notu giriniz: ");
+        int vizeNotu = scanner.nextInt();
+        System.out.print("Final Notu Giriniz: ");
+        int finalNotu = scanner.nextInt();
+
+        int ortalama = (vizeNotu*40/100 + finalNotu*60/100);
+        String harfNotu ;
+        String gecmeDurumu;
+
+        if (ortalama<30) {
+            harfNotu = "FF";
+            gecmeDurumu = "Kaldı";
+
+         if (ortalama < 40) {
+                harfNotu = "DD";
+                gecmeDurumu = "Koşullu Geçti";
+            } else if (ortalama < 50) {
+                harfNotu = "DC";
+                gecmeDurumu = "Geçti";
+            } else if (ortalama < 60) {
+                harfNotu = "CC";
+                gecmeDurumu = "Geçti";
+            } else if (ortalama < 70) {
+                harfNotu = "CB";
+                gecmeDurumu = "Geçti";
+            } else if (ortalama < 80) {
+                harfNotu = "BB";
+                gecmeDurumu = "Geçti";
+            } else if (ortalama < 90) {
+                harfNotu = "BA";
+                gecmeDurumu = "Geçti";
+            } else if (ortalama < 101) {
+                harfNotu = "AA";
+                gecmeDurumu = "Geçti";
+            }
+            System.out.print(harfNotu);
+         System.out.print(gecmeDurumu);
+        }
