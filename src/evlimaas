@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class listeleme {
+    public static void main(String[] args){
+        Scanner giris = new Scanner(System.in);
+        System.out.print("Kişi sayısını giriniz: ");
+        byte sayi = giris.nextByte();
+        String isim[] = new String[sayi];
+        String medeni_durum[] = new String[sayi];
+        byte cocuk[] = new byte[sayi];
+        int maas[] = new int[sayi];
+        int elineGecen[] = new int[sayi];
+
+
+        for (int i = 0; i < sayi; i++) {
+
+            System.out.println((i + 1) + ". Kişinin Adını Giriniz: ");
+            isim[i] = giris.next();
+
+            System.out.println((i + 1) + ". Kişinin medeni durumu nedir? (evli/bekar):  ");
+            medeni_durum[i] = giris.next();
+
+            System.out.println((i + 1) + ". Kişinin Kaç Çocuğu var Giriniz: ");
+            cocuk[i] = giris.nextByte();
+
+            System.out.println((i + 1) + ". Kişinin Maaşı Kaç Giriniz: ");
+            maas[i] = giris.nextInt();
+
+            elineGecen[i] = maas[i];
+            if (medeni_durum[i].equalsIgnoreCase("evli") || medeni_durum[i].equalsIgnoreCase("E"))
+                elineGecen[i]+= 500;
+
+            if (cocuk[i] > 3)
+                cocuk[i] = 3;
+            elineGecen[i] = elineGecen[i] + (cocuk[i] * 250);
+
+
+        }
+        for (; ; ) {
+
+            System.out.println("1-Listeleme\n2-İsim Arama\n3-Maaş ortalaması\n4-En büyük maaş kime ait\n5-En küçük maaş kime ait\n6-Çıkış\nSeçiminizi Giriniz: ");
+            byte menu = giris.nextByte();
+
+            switch (menu) {
+                case 1:
+
+                    for (int i = 0; i < sayi; i++) {
+                        System.out.println("İsim: " + isim[i]);
+                        System.out.println("Medeni durum: " + medeni_durum[i]);
+                        System.out.println("Çocuk Sayısı: " + cocuk[i]);
+                        System.out.println("Maaş: " + elineGecen[i]); // Maas yerine elineGecen kullanma
+                        System.out.println();
+                    }
+
+                    break;
+                case 2:
+
+                    System.out.println("Aranacak ismi giriniz: ");
+                    String arananIsim = giris.next();
+                    int bulunanIndex = -1;
+                    for (int i = 0; i < sayi; i++) {
+                        if (isim[i].equals(arananIsim)) {
+                            bulunanIndex = i;
+                            break;
+                        }
+                    }
+                    if (bulunanIndex != -1) {
+                        System.out.println("**" + arananIsim + "** isimli kullanıcının bilgileri:");
+                        System.out.println("Medeni Durum: " + medeni_durum[bulunanIndex]);
+                        System.out.println("Kaç çocuk var: " + cocuk[bulunanIndex]);
+                        System.out.println("Kaç maaş alıyor: " + elineGecen[bulunanIndex]);
+                    } else {
+                        System.out.println("**" + arananIsim + "** isimli kullanıcı bulunamadı!");
+                    }
+                    break;
+                case 3:
+
+                    int toplamMaas = 0;
+                    for (int i = 0; i < sayi; i++) {
+                        toplamMaas += elineGecen[i];
+                    }
+
+
+
+
+                case 4:
+                        int enFazla = 0;
+                        for (int i = 1; i < sayi; i++) {
+                            if (elineGecen[i] > elineGecen[enFazla]) {
+                                enFazla = i;
+                            }
+                            System.out.println("En fazla maaş sahip kullanıcı: " + isim[enFazla]);
+                            System.out.println("Maaş Tutarı: " + elineGecen[enFazla] + " TL");
+                        }
+                case 5:
+
+                    int enAzIndex = 0;
+                    for (int i = 1; i < sayi; i++) {
+                        if (elineGecen[i] < elineGecen[enAzIndex]) {
+                            enAzIndex = i;
+                        }
+                    }
+                    System.out.println("En az maaş sahip kullanıcı: " + isim[enAzIndex]);
+                    System.out.println("Maaş Tutarı: " + elineGecen[enAzIndex] + " TL");
+                    break;
+            }
+        }
+    }
+}
