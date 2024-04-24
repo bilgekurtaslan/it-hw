@@ -1,46 +1,98 @@
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Fonksiyonlar {
+    public static void KisiEkle(Scanner scanner, ArrayList<Kisi> kisiListe) {
+        System.out.println("Tc No Giriniz: ");
+        String tc =scanner.next();
+        System.out.println("Ad Giriniz: ");
+        String ad =scanner.next();
+        System.out.println("Soyad Giriniz: ");
+        String soyad =scanner.next();
+        Kisi kisi = new Kisi(tc,ad,soyad);
+        kisiListe.add(kisi);
+        System.out.println(ad+ "Kaydı Yapıldı!");
+    }
 
-	public static void VeriGiris(Scanner giris, List<Ogrenci> ogrenciler) {
-		System.out.println("İsim Giriniz : ");
-		String ad1=giris.next();
-		System.out.println("Vize notu Giriniz : ");
-		int vn1=giris.nextInt();
-		System.out.println("Final notu Giriniz : ");
-		int fn1=giris.nextInt();
-		Ogrenci ogrenci=new Ogrenci(ad1,vn1,fn1);
-		ogrenciler.add(ogrenci);
-		System.out.println(ad1+" Kaydı yapıldı");
-	}
+    public static void OgrenciEkle(Scanner scanner, ArrayList<Ogrenci> ogrenciListe) {
+        System.out.println("Tc No Giriniz: ");
+        String tc =scanner.next();
+        System.out.println("Ad Giriniz: ");
+        String ad =scanner.next();
+        System.out.println("Soyad Giriniz: ");
+        String soyad =scanner.next();
+        System.out.println("Vize Notu Giriniz: ");
+        int vn =scanner.nextInt();
+        System.out.println("Final Notu Giriniz: ");
+        int fn =scanner.nextInt();
+        Ogrenci ogrenci=new Ogrenci(tc,ad,soyad,vn,fn);
+        ogrenciListe.add(ogrenci);
+        System.out.println(ad+"Kaydı Yapıldı!");
+    }
 
-	public static void Listele(List<Ogrenci> ogrenciler) {
-		System.out.println("Ad\tVize\tFinal\tBaşarı");
-		for (Ogrenci ogrenci : ogrenciler) {
-			System.out.println(ogrenci.toString());
-		}
-		
-	}
+    public static void KisiListele(ArrayList<Kisi> kisiListe) {
+        if (kisiListe.isEmpty()){
+            System.out.println("Kişi Listesinde Hiç Kayıt Yok.");
+            return;
+        }
+        for (Kisi kisi: kisiListe
+             ) {System.out.println(kisi);
+        }
+    }
 
-	public static void AdArama(String arananAd, List<Ogrenci> ogrenciler) {
-		for (Ogrenci ogrenci : ogrenciler) {
-			if(ogrenci.getAd().equalsIgnoreCase(arananAd)) {
-				ogrenci.Yazdir();
-			}
-		}
-		
-	}
+    public static void OgrenciListele(ArrayList<Ogrenci> ogrenciListe) {
+        if (ogrenciListe.isEmpty()){
+            System.out.println("Kişi Listesinde Hiç Kayıt Yok.");
+            return;
+        }
+        for (Ogrenci ogrenci: ogrenciListe
+        ) {System.out.println(ogrenci);
+        }
+    }
 
-	public static void Ortalama(List<Ogrenci> ogrenciler) {
-		int vnt=0,fnt=0,bnt=0;
-		for (Ogrenci ogrenci : ogrenciler) {
-			vnt+=ogrenci.getVn();
-			fnt+=ogrenci.getFn();
-			bnt+=ogrenci.getBn();
-		}
-		System.out.println("Vize Not Ortalaması : "+vnt/ogrenciler.size());
-		System.out.println("Final Not Ortalaması : "+fnt/ogrenciler.size());
-		System.out.println("Başarı Not Ortalaması : "+bnt/ogrenciler.size());
-	}
+    public static void KisiAra(Scanner scanner, ArrayList<Kisi> kisiListe) {
+        if (kisiListe.isEmpty()){
+            System.out.println("Kişi Listesinde Hiç Kayıt Yok.");
+            return;
+        }
+        System.out.println("TC No Giriniz: ");
+        String arananTcNo = scanner.next();
+        for (Kisi kisi:kisiListe
+             ) {
+             if   (kisi.getTcNo().equalsIgnoreCase(arananTcNo)) {
+                 kisi.Yazdir();
+        }
+
+
+        }
+    }
+
+    public static void OgrenciAra(Scanner scanner, ArrayList<Ogrenci> ogrenciListe) {
+        if (ogrenciListe.isEmpty()){
+            System.out.println("Kişi Listesinde Hiç Kayıt Yok.");
+            return;
+        }
+        System.out.println("Ad Giriniz: ");
+        String arananAd = scanner.next();
+        for (Ogrenci ogrenci:ogrenciListe
+        ) {
+            if   (ogrenci.getAd().equalsIgnoreCase(arananAd)) {
+                ogrenci.Yazdir();
+            }
+
+
+        }
+    }
+
+    public static void Enb(ArrayList<Ogrenci> ogrenciListe) {
+        int enbVize = ogrenciListe.get(0).getVn();
+        for (Ogrenci ogrenci: ogrenciListe) {
+            if (ogrenci.getVn()>enbVize) enbVize=ogrenci.getVn();
+        }
+        for (Ogrenci ogrenci : ogrenciListe) {
+            if (ogrenci.getVn()== enbVize){
+                ogrenci.Yazdir();
+            }
+        }
+    }
 }
