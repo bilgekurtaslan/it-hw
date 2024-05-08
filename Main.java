@@ -1,37 +1,26 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-
+package hatalar;
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner=new Scanner(System.in);
-        ArrayList<Kisi> kisiListe= new ArrayList<Kisi>();
-        ArrayList<Ogrenci> ogrenciListe= new ArrayList<Ogrenci>();
-        byte menu;
-        while (true){
-            System.out.println("0-Çıkış/1-Kişi Ekle/2-Öğrenci Ekle/3-Kişi Listele/");
-            System.out.println("4-Öğrenci Listele/5-Kişi Ara/6-En Büyük Vize");
-            menu=scanner.nextByte();
-            switch (menu){
-                case 0:System.out.println("Program bitti"); System.exit(0);
-                    break;
-                case 1:Fonksiyonlar.KisiEkle(scanner,kisiListe);
-                    break;
-                case 2:Fonksiyonlar.OgrenciEkle(scanner,ogrenciListe);
-                    break;
-                case 3:Fonksiyonlar.KisiListele(kisiListe);
-                    break;
-                case 4:Fonksiyonlar.OgrenciListele(ogrenciListe);
-                    break;
-                case 5:Fonksiyonlar.KisiAra(scanner,kisiListe);
-                    break;
-                case 6:Fonksiyonlar.OgrenciAra(scanner,ogrenciListe);
-                    break;
-                case 7:Fonksiyonlar.Enb(ogrenciListe);
-                    break;
-                default:System.out.println("Yanlış Menü Değeri Girildi");
-                    break;
-            }
+        int a=10, b=2, c=0;
+        String d="3 ";
+        try {
+            System.out.println(a+" / " +b+" = "+(a/b));
+            System.out.println(a+" / " +c+" = "+(a/c));
+            System.out.println(a+" / " +d+" = "+(a/Integer.parseInt(d)));
+        } catch (ArithmeticException e) {
+            c=1;
+            System.out.println(a+" / " +c+" = "+(a/c));
+            // System.out.println("Hata: " +e);
+            // System.out.println("Hata: " +e.getMessage());
+        }catch (NumberFormatException e){
+            d=d.trim();
+            System.out.println(a+" / " +d+" = "+(a/Integer.parseInt(d)));
+        } catch (Exception e){
+            System.out.println(e);
+        }finally {
+            System.out.println("Try bloğunun sonunda hata olmasa da çalışır");
         }
+        System.out.println("Program bitti");
+
     }
 }
